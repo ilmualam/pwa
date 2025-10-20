@@ -1,6 +1,6 @@
 {
-  "name": "Home & Garden Lot's Site",
-  "short_name": "Garden",
+  "name": "Ilmu Alam - Islamic Motivation Blog",
+  "short_name": "Ilmu Alam",
   "description": "Perkongsian motivasi Islamik, hukum, kisah dan teladan membimbing diri, memujuk kecewa hati yang sedih terluka ke arah pahala dunia dan akhirat",
   "start_url": "https://www.ilmualam.com/?utm_source=pwa",
   "display": "standalone",
@@ -9,13 +9,13 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "https://cdn.jsdelivr.net/gh/tbbcom/garden@main/assets/pwa/src/icon-192.png",
+      "src": "https://cdn.jsdelivr.net/gh/ilmualam/pwa@main/assets/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "https://cdn.jsdelivr.net/gh/tbbcom/garden@main/assets/pwa/src/icon-512.png",
+      "src": "https://cdn.jsdelivr.net/gh/ilmualam/pwa@main/assets/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
