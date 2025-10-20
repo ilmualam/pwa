@@ -8,18 +8,18 @@
     <title>Motivasi Islamik</title>
     
     <!-- PWA Manifest -->
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="https://ilmualam.github.io/pwa/manifest.json">
     
     <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="apple-touch-icon" href="https://ilmualam.github.io/pwa/assets/icon-192x192.png">
     
     <!-- Styles -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://ilmualam.github.io/pwa/styles.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🌿 Garden</h1>
+            <h1>🌿 Ilmu Alam</h1>
             <p class="subtitle">Ilmu Alam's Site Development</p>
         </header>
         
@@ -67,7 +67,7 @@
         // Register Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
+                navigator.serviceWorker.register('https://ilmualam.github.io/pwa/sw.js')
                     .then((registration) => {
                         console.log('Service Worker registered successfully:', registration);
                         document.getElementById('sw-status').textContent = 
