@@ -1,0 +1,24 @@
+{
+  "name": "Home & Garden Lot's Site",
+  "short_name": "Garden",
+  "description": "Perkongsian motivasi Islamik, hukum, kisah dan teladan membimbing diri, memujuk kecewa hati yang sedih terluka ke arah pahala dunia dan akhirat",
+  "start_url": "https://www.ilmualam.com/?utm_source=pwa",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4CAF50",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://cdn.jsdelivr.net/gh/tbbcom/garden@main/assets/pwa/src/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://cdn.jsdelivr.net/gh/tbbcom/garden@main/assets/pwa/src/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
