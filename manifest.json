@@ -5,7 +5,7 @@
   "start_url": "https://www.ilmualam.com/?utm_source=pwa",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#4CAF50",
+  "theme_color": "#249749",
   "orientation": "portrait-primary",
   "icons": [
     {
