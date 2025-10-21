@@ -1,4 +1,3 @@
-
 # Ilmu Alam — PWA (Progressive Web App)
 A small repository containing the Progressive Web App (PWA) assets for Ilmu Alam — an Islamic motivation blog. This repo holds the web app manifest, service-worker code and supporting assets to enable offline access, add-to-home-screen, and a native-like experience.
 
