@@ -4,7 +4,10 @@ const OFFLINE_URL = '/offline.html';
 const urlsToCache = [
   '/',
   '/index.html',
+  '/offline.html',
   '/manifest.json',
+  '/pwa/assets/icon-192x192.png',
+  '/pwa/assets/assets/icon-512.png',
   '/styles.css',
   OFFLINE_URL
 ];
