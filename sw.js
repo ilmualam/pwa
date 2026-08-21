@@ -7,7 +7,7 @@ const urlsToCache = [
   '/offline.html',
   '/manifest.json',
   '/pwa/assets/icon-192x192.png',
-  '/pwa/assets/assets/icon-512x512.png',
+  '/pwa/assets/icon-512x512.png',
   '/styles.css',
   OFFLINE_URL
 ];
