@@ -1,21 +1,72 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "id": "https://www.ilmualam.com/",
+  "name": "The Ilmu Alam – Motivasi Islamik",
+  "short_name": "Ilmu Alam",
+  "description": "Perkongsian motivasi Islamik, hukum, kisah dan teladan membimbing diri, memujuk kecewa hati yang sedih terluka ke arah pahala dunia dan akhirat",
+  "lang": "ms-MY",
+  "dir": "ltr",
+  "start_url": "https://www.ilmualam.com/?utm_source=pwa",
+  "scope": "https://www.ilmualam.com/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#ffffff",
+  "theme_color": "#249749",
+  "categories": [
+    "education",
+    "lifestyle",
+    "books"
+  ],
   "icons": [
     {
-      "src": "/web-app-manifest-192x192.png",
+      "src": "https://ilmualam.github.io/pwa/assets/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any"
     },
     {
-      "src": "/web-app-manifest-512x512.png",
+      "src": "https://ilmualam.github.io/pwa/assets/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://ilmualam.github.io/pwa/assets/maskable-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  "shortcuts": [
+    {
+      "name": "Al-Quran Online",
+      "short_name": "Al-Quran",
+      "url": "https://quran.ilmualam.com/",
+      "icons": [
+        {
+          "src": "https://ilmualam.github.io/pwa/assets/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Doa",
+      "url": "https://www.ilmualam.com/search/label/Doa",
+      "icons": [
+        {
+          "src": "https://ilmualam.github.io/pwa/assets/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Islamik",
+      "url": "https://www.ilmualam.com/search/label/Islamik",
+      "icons": [
+        {
+          "src": "https://ilmualam.github.io/pwa/assets/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
 }
