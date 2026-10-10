@@ -1,89 +1,66 @@
-# Ilmu Alam — PWA (Progressive Web App)
-A small repository containing the Progressive Web App (PWA) assets for Ilmu Alam — an Islamic motivation blog. This repo holds the web app manifest, service-worker code and supporting assets to enable offline access, add-to-home-screen, and a native-like experience.
+# Ilmu Alam · PWA assets
 
-Brief description (from manifest):
-Perkongsian motivasi Islamik, hukum, kisah dan teladan membimbing diri, memujuk kecewa hati yang sedih terluka ke arah pahala dunia dan akhirat
-(Sharing Islamic motivation, rulings, stories and lessons to guide oneself and soothe the heart toward worldly and hereafter reward.)
+Web app manifest, icons and service worker that make **[www.ilmualam.com](https://www.ilmualam.com/)** installable as an app ("Add to Home screen"). The blog runs on Blogger, which can't host these files, so GitHub Pages serves them from **`https://ilmualam.github.io/pwa/`** and the Blogger theme links to them.
 
-Features
-- Web App Manifest (standalone display, theme/background colors, icons)
-- Service Worker for offline caching and fast loading
-- Lightweight, focused on giving Ilmu Alam an installable PWA shell
-- Ready-to-configure icons and start_url
+Sister project: **[quran.ilmualam.com](https://quran.ilmualam.com/)**, the Al-Quran Online reader ([ilmualam/quran](https://github.com/ilmualam/quran)).
 
-Quick links
-- Manifest name: Ilmu Alam - Islamic Motivation Blog
-- Short name: Ilmu Alam
-- Start URL: https://www.ilmualam.com/?utm_source=pwa
-- Theme color: #249749
-- Icons (example URLs used in repo):
-  - https://ilmualam.github.io/pwa/assets/icon-192x192.png (192x192)
-  - https://ilmualam.github.io/pwa/assets/assets/icon-512.png (512x512)
+---
 
-Table of contents
-- Installation
-- Usage
-- Service worker (registering, caching strategy)
-- Manifest (what to edit)
-- Local testing & debugging
-- Deploying
-- Contributing
-- License
+## Files
 
-Installation (for beginners)
-1. Clone the repo:
-   git clone https://github.com/ilmualam/pwa.git
-2. Serve the files over HTTP (PWAs require HTTPS or localhost). Simple options:
-   - Using Node: npx http-server -c-1 -p 8080
-   - Using Python 3: python3 -m http.server 8080
-3. Open the site at http://localhost:8080 in Chrome/Edge/Firefox.
+| File | Purpose | Used by |
+|---|---|---|
+| `manifest.json` | PWA manifest: name, colours, `start_url`, icons, shortcuts | Blogger theme `<link rel="manifest">` |
+| `assets/site.webmanifest` | Same content as `manifest.json`, kept for themes that use the RealFaviconGenerator path | Blogger theme (if linked) |
+| `assets/favicon.svg` | Favicon for browsers that support SVG (4.8 KB) | Modern browsers |
+| `assets/favicon.ico` | 16/32/48 px favicon | Legacy browsers, `/favicon.ico` requests |
+| `assets/favicon-96x96.png` | PNG favicon; Google Search uses a multiple of 48 px | Search results, browsers |
+| `assets/apple-touch-icon.png` | 180 px iOS home-screen icon | iPhone / iPad |
+| `assets/icon-192x192.png`, `assets/icon-512x512.png` | App icons (`purpose: any`) | Android install, splash screen |
+| `assets/maskable-512x512.png` | Full-bleed icon with the logo inside the 80% safe zone (`purpose: maskable`) | Android adaptive icons |
+| `sw.js`, `offline.html`, `index.html`, `styles.css` | Demo page + service worker for `ilmualam.github.io/pwa/` itself | This GitHub Pages site only |
 
-Usage — how the PWA integrates with a site
-- The manifest (manifest.json) describes the app name, icons, theme and start_url. Place a link to it in your HTML head:
-  <link rel="manifest" href="/manifest.json">
-- Register the service worker (example snippet to include near the end of your HTML or in your JS entry file):
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/service-worker.js')
-        .then(reg => console.log('SW registered', reg))
-        .catch(err => console.error('SW registration failed', err));
-    });
-  }
+## Install on Blogger
 
-Service worker — recommended patterns
-- Basic responsibilities:
-  - Precache core assets (HTML, CSS, JS, icons)
-  - Serve cached assets fast (cache-first) while using network-first for API requests
-  - Keep updates simple: use skipWaiting() and clients.claim() for immediate activation when appropriate
-- Example high-level approach:
-  - install event: open cache, add pre-cache list
-  - activate event: cleanup old caches
-  - fetch event: respond with cache-first for assets, network-first for dynamic content
-- Security: make sure the service worker is served from the origin you want it to control (scope is the folder where the SW is located).
+In **Theme → Edit HTML**, paste inside `<head>`, replacing any older favicon or manifest tags:
 
-Manifest — what to edit
-- Keys in manifest.json you may want to update:
-  - name / short_name — visible to users
-  - description — short description of the app
-  - start_url — where the app opens when launched from home screen; include UTM if you want analytics
-  - display — "standalone" keeps the app-looking UI (no browser chrome)
-  - background_color / theme_color — used during loading and by the OS
-  - icons — provide properly sized PNGs, include maskable purpose if needed
-- Example manifest excerpt (keeps values found in this repo):
-  {
-    "name": "Ilmu Alam - Islamic Motivation Blog",
-    "short_name": "Ilmu Alam",
-    "description": "Perkongsian motivasi Islamik, hukum, kisah dan teladan ...",
-    "start_url": "https://www.ilmualam.com/?utm_source=pwa",
-    "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#249749",
-    "icons": [
-      { "src": "assets/icon-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
-      { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
-    ]
-  }
+```html
+<link rel='manifest' href='https://ilmualam.github.io/pwa/manifest.json'/>
+<link rel='icon' href='https://ilmualam.github.io/pwa/assets/favicon.ico' sizes='48x48'/>
+<link rel='icon' href='https://ilmualam.github.io/pwa/assets/favicon.svg' type='image/svg+xml'/>
+<link rel='icon' href='https://ilmualam.github.io/pwa/assets/favicon-96x96.png' type='image/png' sizes='96x96'/>
+<link rel='apple-touch-icon' href='https://ilmualam.github.io/pwa/assets/apple-touch-icon.png'/>
+<meta name='theme-color' content='#249749'/>
+<meta name='apple-mobile-web-app-title' content='Ilmu Alam'/>
+```
 
-Local testing & debugging
-- Lighthouse (Chrome DevTools) — run an audit to check PWA score and get actionable recommendations.
--
+Then check it in Chrome DevTools → **Application → Manifest**. You should see the name, three icons and no errors.
+
+## Known limitation: no offline mode on Blogger
+
+A service worker must be served from the **same origin** as the page it controls. Blogger can't serve one from `www.ilmualam.com`, so `sw.js` here only controls `ilmualam.github.io/pwa/`. The blog is still installable, because current Chrome and Edge no longer require a service worker. It just won't work offline. If you need offline reading, use [quran.ilmualam.com](https://quran.ilmualam.com/), which has a full service worker.
+
+## Updating icons
+
+1. Start from one square, transparent, high-resolution logo (≥ 512 px).
+2. Export `icon-192x192.png` and `icon-512x512.png` at those sizes, `apple-touch-icon.png` at 180 px on white, and `favicon-96x96.png` at 96 px.
+3. For `maskable-512x512.png`, put the logo at about 60% of the canvas on a solid background, then preview it at [maskable.app](https://maskable.app/).
+4. Keep file names unchanged, so the Blogger theme and installed apps keep working.
+5. Bump `CACHE_NAME` in `sw.js` (for example `ilmualam-cache-v3`) whenever cached files change.
+
+## Local testing
+
+Service workers need HTTPS or `localhost`, and this site expects to live under `/pwa/`:
+
+```bash
+mkdir site && git clone https://github.com/ilmualam/pwa.git site/pwa
+cd site && python3 -m http.server 8080   # open http://localhost:8080/pwa/
+```
+
+## License
+
+[MIT](LICENSE). The Ilmu Alam name and logo belong to The Ilmu Alam and are not covered by the code license.
+
+---
+
+© 2025–2026 [The Ilmu Alam](https://www.ilmualam.com/)
