@@ -1,15 +1,15 @@
 // Service Worker for Ilmu Alam PWA
-const CACHE_NAME = 'ilmualam-cache-v1';
-const OFFLINE_URL = '/offline.html';
+const CACHE_NAME = 'ilmualam-cache-v2';
+// Relative to this file, so it works under ilmualam.github.io/pwa/
+const OFFLINE_URL = './offline.html';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/offline.html',
-  '/manifest.json',
-  '/pwa/assets/icon-192x192.png',
-  '/pwa/assets/icon-512x512.png',
-  '/styles.css',
-  OFFLINE_URL
+  './',
+  './index.html',
+  OFFLINE_URL,
+  './manifest.json',
+  './styles.css',
+  './assets/icon-192x192.png',
+  './assets/icon-512x512.png'
 ];
 
 // Install event - cache resources
@@ -50,7 +50,7 @@ self.addEventListener('activate', (event) => {
 
 // Fetch event - serve from cache when offline, only cache same-origin GET success responses
 self.addEventListener('fetch', (event) => {
-  console.log('Service Worker: Fetching', event.request.url);
+  if (event.request.method !== 'GET') return;
   event.respondWith((async () => {
     try {
       // Return cached response if present
